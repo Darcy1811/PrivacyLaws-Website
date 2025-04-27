@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivacyGuard | Story Viewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+    <div class="container">
+        <div class="logo">
+            <h1>Privacy<span>Guard</span></h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="stories.html">Real Stories</a></li>
+                <li><a href="#laws">Basic Laws</a></li>
+                <li><a href="#report">File Report</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    </header>
+
+    <section class="story-viewer">
+        <div class="container">
+            <h2 class="story-title" id="story-title">Story Title</h2>
+            
+            <div class="comic-container">
+                <img id="comic-image" class="comic-image" src="" alt="Comic panel">
+            </div>
+            
+            <div class="story-nav">
+                <button id="prev-btn" class="btn">Previous</button>
+                <span id="page-indicator">1/8</span>
+                <button id="next-btn" class="btn">Next</button>
+            </div>
+            
+            <a href="stories" class="back-to-stories">← Back to All Stories</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Privacy and Consumer Protection Laws</h3>
+                    <p>Dedicated to consumer education and empowerment in the digital age.</p>
+                    <p>© 2025 PrivacyGuard. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#laws">Basic Laws</a></li>
+                        <li><a href="#report">File Report</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-legal">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Stay Informed</h3>
+                    <p>Subscribe to our newsletter for updates on privacy laws.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get story ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const storyId = urlParams.get('story') || '1';
+        
+        // Story data
+        const stories = {
+            '1': {
+                title: "The KYC Con: How a Retired Teacher Lost Her Savings",
+                panels: 8,
+                description: "A fake KYC update scam that wiped out a lifetime's savings"
+            },
+            '2': {
+                title: "Digital Arrest: The Fake Police Scam",
+                panels: 4,
+                description: "Sophisticated impersonation of police officials"
+            },
+            '3': {
+                title: "The Fake Colleague: A ₹3.5 Crore Scam",
+                panels: 4,
+                description: "Spoofed caller ID used to impersonate a colleague"
+            }
+        };
+        
+        // Current panel state
+        let currentPanel = 1;
+        const totalPanels = stories[storyId].panels;
+        
+        // DOM elements
+        const comicImage = document.getElementById('comic-image');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const pageIndicator = document.getElementById('page-indicator');
+        const storyTitle = document.getElementById('story-title');
+        
+        // Set initial state
+        storyTitle.textContent = stories[storyId].title;
+        updateComicImage();
+        updateNavButtons();
+        
+        // Event listeners
+        comicImage.addEventListener('click', nextPanel);
+        prevBtn.addEventListener('click', prevPanel);
+        nextBtn.addEventListener('click', nextPanel);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevPanel();
+            if (e.key === 'ArrowRight') nextPanel();
+        });
+        
+        // Functions
+        function updateComicImage() {
+            comicImage.src = `assets/stories/story${storyId}-panel${currentPanel}.png`;
+            comicImage.alt = `Story ${storyId} Panel ${currentPanel}`;
+            pageIndicator.textContent = `${currentPanel}/${totalPanels}`;
+        }
+        
+        function updateNavButtons() {
+            prevBtn.disabled = currentPanel === 1;
+            nextBtn.disabled = currentPanel === totalPanels;
+        }
+        
+        function nextPanel() {
+            if (currentPanel < totalPanels) {
+                currentPanel++;
+                updateComicImage();
+                updateNavButtons();
+            }
+        }
+        
+        function prevPanel() {
+            if (currentPanel > 1) {
+                currentPanel--;
+                updateComicImage();
+                updateNavButtons();
+            }
+        }
+    </script>
+</body>
+</html>

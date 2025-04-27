@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivacyGuard | Real Life Cases</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Privacy<span>Guard</span></h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="stories.html">Real Stories</a></li>
+                    <li><a href="#laws">Basic Laws</a></li>
+                    <li><a href="#report">File Report</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="story-selection">
+        <div class="container">
+            <br><br><br>
+            <h1>Real Life Stories</h1>
+            <p class="subtitle">Select a story to learn from these actual cases</p>
+            
+            <div class="story-grid">
+                <!-- Story 1 Preview -->
+                <div class="story-preview" data-story="1">
+                    <div class="preview-image">
+                        <img src="assets/stories/1/story1-cover.png" alt="Retired teacher story">
+                    </div>
+                    <div class="preview-content">
+                        <h3>The KYC Con</h3>
+                        <p>A retired teacher loses her life savings to a fake KYC update scam...</p>
+                        <button class="btn read-story">Read Story</button>
+                    </div>
+                </div>
+
+                <!-- Story 2 Preview -->
+                <div class="story-preview" data-story="2">
+                    <div class="preview-image">
+                        <img src="assets/stories/2/story2-cover.png" alt="Digital arrest story">
+                    </div>
+                    <div class="preview-content">
+                        <h3>Digital Arrest</h3>
+                        <p>A retired official tricked into transferring ₹1.2 crore by fake police...</p>
+                        <button class="btn read-story">Read Story</button>
+                    </div>
+                </div>
+
+                <!-- Story 3 Preview -->
+                <div class="story-preview" data-story="3">
+                    <div class="preview-image">
+                        <img src="assets/stories/3/story3-cover.png" alt="Fake colleague story">
+                    </div>
+                    <div class="preview-content">
+                        <h3>The Fake Colleague</h3>
+                        <p>Company director scammed of ₹3.5 crore through spoofed caller ID...</p>
+                        <button class="btn read-story">Read Story</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Privacy and Consumer Protection Laws</h3>
+                    <p>Dedicated to consumer education and empowerment in the digital age.</p>
+                    <p>© 2025 PrivacyGuard. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#laws">Basic Laws</a></li>
+                        <li><a href="#report">File Report</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-legal">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Stay Informed</h3>
+                    <p>Subscribe to our newsletter for updates on privacy laws.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.read-story').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const storyId = this.closest('.story-preview').dataset.story;
+                window.location.href = `story_viewer.html?story=${storyId}`;
+            });
+        });
+    </script>
+</body>
+</html>
