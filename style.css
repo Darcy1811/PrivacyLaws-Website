@@ -19,6 +19,15 @@ html {
     scroll-behavior: smooth;
 }
 
+.story-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 80vh; /* Adjust this value to fit more or less on screen */
+    display: block;
+    margin: 20px auto;
+    object-fit: contain;
+}
+
 body {
     font-family: 'Georgia', sans-serif;
     font-size: var(--base-font-size);
@@ -464,7 +473,7 @@ img {
 
 /* Footer */
 .footer {
-    background-color: #0F1A2B;
+    background-color:#0F1A2B;
     color: var(--secondary);
     padding: 3rem 0 1rem;
 }
@@ -1080,4 +1089,13 @@ img {
     .story-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.comic-image {
+    max-width: 100%;
+    max-height: 80vh; /* Adjust this value to shrink or grow image height */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
 }
